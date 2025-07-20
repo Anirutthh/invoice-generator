@@ -14,6 +14,17 @@ router.post('/add', async (req, res) => {
   }
 });
 
+// Get all invoices
+router.get('/', async (req, res) => {
+  try {
+    const invoices = await Invoice.find();
+    res.json(invoices);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 // GET /api/invoices — Get all invoices
 router.get('/', async (req, res) => {
   try {
